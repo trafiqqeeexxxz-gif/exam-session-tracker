@@ -6,3 +6,5 @@ Kuznetsov Kuzma Kuzmich 19.01.25 7 History of Belarus
 Sokolov Sergey Sergeevich 20.01.25 9 Mathematics
 Petrov Petr Petrovich 21.01.25 8 History of Belarus
 Novak Nikolay Nikolaevich 22.01.25 5 Physics
+Morozov Mikhail Mikhailovich 23.01.25 9 History of Belarus
+Volkov Vladimir Vladimirovich 24.01.25 10 Physics
