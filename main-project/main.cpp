@@ -1,7 +1,10 @@
 #include <iostream>
-#include "file_reader.h"
 #include <iomanip>
+#include <vector>
+#include "file_reader.h"
 #include "filters.h"
+#include "sorts.h"
+#include "comparators.h"
 
 using namespace std;
 
@@ -25,7 +28,7 @@ void printSessions(const vector<StudentSession>& sessions, const string& title) 
 int main() {
     cout << "Exam Session Results" << endl;
     cout << "Variant: Session Results" << endl;
-    cout << "Author: Krivonosog Gleb" << endl;
+    cout << "Author: Krivonosov Gleb" << endl;
     cout << "Group: 25Pinj1D" << endl;
 
     auto sessions = readDataFromFile("data.txt");
@@ -51,8 +54,47 @@ int main() {
         case 3:
             printSessions(filterByGradeAbove7(sessions), "Grades above 7");
             break;
-        case 4:
+        case 4: {
+            vector<StudentSession*> sessionPtrs;
+            for (auto& session : sessions) {
+                sessionPtrs.push_back(&session);
+            }
+
+            cout << "\n--- Select Sort Method ---\n";
+            cout << "1. Insertion Sort\n";
+            cout << "2. Merge Sort\n";
+            int sortMethod;
+            cin >> sortMethod;
+
+            cout << "\n--- Select Sort Criteria ---\n";
+            cout << "1. By last name (ascending)\n";
+            cout << "2. By discipline and grade\n";
+            int compareMethod;
+            cin >> compareMethod;
+
+            void (*sortFuncs[])(vector<StudentSession*>&, ComparatorFunc) = {
+                insertionSort,
+                mergeSort
+            };
+
+            ComparatorFunc compareFuncs[] = {
+                compareByLastName,
+                compareByDisciplineAndGrade
+            };
+
+            if (sortMethod >= 1 && sortMethod <= 2 && compareMethod >= 1 && compareMethod <= 2) {
+                sortFuncs[sortMethod - 1](sessionPtrs, compareFuncs[compareMethod - 1]);
+
+                cout << "\n=== Sorted Records ===" << endl;
+                for (const auto* session : sessionPtrs) {
+                    printSession(*session);
+                }
+            }
+            else {
+                cout << "Invalid choice!" << endl;
+            }
             break;
+        }
         case 0:
             cout << "Exiting program" << endl;
             break;
