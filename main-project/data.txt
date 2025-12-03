@@ -1,0 +1,8 @@
+Ivanov Ivan Ivanovich 15.01.25 9 History of Belarus
+Petrov Petr Petrovich 16.01.25 8 Mathematics
+Sidorov Sidor Sidorovich 17.01.25 6 Physics
+Ivanov Ivan Ivanovich 18.01.25 10 Computer Science
+Kuznetsov Kuzma Kuzmich 19.01.25 7 History of Belarus
+Sokolov Sergey Sergeevich 20.01.25 9 Mathematics
+Petrov Petr Petrovich 21.01.25 8 History of Belarus
+Novak Nikolay Nikolaevich 22.01.25 5 Physics
