@@ -1,8 +1,14 @@
 #pragma once
-#include <vector>
 #include "student_session.h"
 
-using namespace std;
 
-vector<StudentSession> filterByHistoryBelarus(const vector<StudentSession>& sessions);
-vector<StudentSession> filterByGradeAbove7(const vector<StudentSession>& sessions);
+bool checkByHistoryBelarus(StudentSession* element);
+bool checkByGradeAbove7(StudentSession* element);
+
+
+StudentSession** filterData(
+    StudentSession* array[],      
+    int size,                    
+    bool (*check)(StudentSession*), 
+    int& result_size             
+);

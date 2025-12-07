@@ -1,24 +1,35 @@
 #include "filters.h"
-#include <algorithm>
 
-using namespace std;
-
-vector<StudentSession> filterByHistoryBelarus(const vector<StudentSession>& sessions) {
-    vector<StudentSession> result;
-    for (const auto& session : sessions) {
-        if (session.discipline == "History of Belarus") {
-            result.push_back(session);
-        }
-    }
-    return result;
+bool checkByHistoryBelarus(StudentSession* element) {
+    return element->discipline == "History of Belarus";
 }
 
-vector<StudentSession> filterByGradeAbove7(const vector<StudentSession>& sessions) {
-    vector<StudentSession> result;
-    for (const auto& session : sessions) {
-        if (session.grade > 7) {
-            result.push_back(session);
+bool checkByGradeAbove7(StudentSession* element) {
+    return element->grade > 7;
+}
+
+StudentSession** filterData(
+    StudentSession* array[],
+    int size,
+    bool (*check)(StudentSession*),
+    int& result_size
+) {
+ 
+    StudentSession** temp = new StudentSession * [size];
+    result_size = 0;
+    
+    for (int i = 0; i < size; i++) {
+        if (check(array[i])) {
+            temp[result_size++] = array[i];
         }
     }
+    
+  
+    StudentSession** result = new StudentSession * [result_size];
+    for (int i = 0; i < result_size; i++) {
+        result[i] = temp[i];
+    }
+    
+    delete[] temp;
     return result;
 }
